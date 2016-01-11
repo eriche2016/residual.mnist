@@ -22,9 +22,9 @@ local function convunit31(net,fin,half,str,nobatch)
     -- will half the feature map size(both along h and w), 
     -- but we will also need to double the number of feature maps 
     if(half) then                        
-        convunit(net,fin,2*fin,3,2,nil,nobatch)
+        convunit(net,fin,2*fin,str,2,nil,nobatch)
     else 
-        convunit(net,fin,fin,3,1,nil,nobatch) end
+        convunit(net,fin,fin,str,1,nil,nobatch) end
 end
 
 local function convunit2(net,fin,half)
