@@ -17,7 +17,6 @@ end
 local function convunit31(net,fin,half,str,nobatch)
     local str = str or 3
     local half = half or false
-<<<<<<< HEAD
 
     -- by default, half = false, if it is true, then 
     -- will half the feature map size(both along h and w), 
@@ -26,11 +25,9 @@ local function convunit31(net,fin,half,str,nobatch)
         convunit(net,fin,2*fin,str,2,nil,nobatch)
     else 
         convunit(net,fin,fin,str,1,nil,nobatch) end
-=======
     if(half) then
         convunit(net,fin,2*fin,str,2,nil,nobatch)
     else convunit(net,fin,fin,str,1,nil,nobatch) end
->>>>>>> 71625ff8e6a86c8ba809f004250617616913d231
 end
 
 local function convunit2(net,fin,half)
