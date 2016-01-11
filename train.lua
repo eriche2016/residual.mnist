@@ -1,8 +1,14 @@
 local train = {}
 function train.sgd(net,ct,Xt,Yt,Xv,Yv,K,sgd_config,batch)
+    print('here') 
+    local protos = {} 
+    protos.net = net 
+    protos.ct = ct 
+
     local x,dx = net:getParameters()
     require 'optim'
     local batch = batch or 500
+    print('line 11')
     local Nt = Xt:size(1)
     print('parameters size ..')
     print(#x)
@@ -33,7 +39,10 @@ function train.sgd(net,ct,Xt,Yt,Xv,Yv,K,sgd_config,batch)
         print('loss..'..lloss)
         print('valid accuracy..'.. train.accuracy(Xv,Yv,net,batch))
         print('train accuracy..'.. train.accuracy(Xt,Yt,net,batch))
-        torch.save('net.t7',net)
+      
+        checkpoint = {} 
+        checkpoint.protos = protos
+        torch.save('checkpoint.t7',checkpoint)
     end
 end
 function train.accuracy(Xv,Yv,net,batch)

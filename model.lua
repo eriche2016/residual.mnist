@@ -5,10 +5,12 @@ local res = require 'residual'
 
 
 function model.residual(N)
+    
     local N = N or 15
     local half = true
 
     net = nn.Sequential()
+
     net:add(nn.Reshape(1,28,28))
     res.convunit(net,1,64)
     res.rconvunitN(net,64,N)
@@ -25,10 +27,6 @@ function model.residual(N)
     cls:add(nn.LogSoftMax())
     net:add(cls)
     local ct = nn.ClassNLLCriterion()
-
-    require 'cunn';
-    net = net:cuda()
-    ct = ct:cuda()
 
     return net,ct
 end
