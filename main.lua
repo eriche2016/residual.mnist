@@ -1,4 +1,9 @@
 require 'nn'
+--[[
+-- if you want to load a pretrained model, then the paramters must match, finetune on this model 
+-- currenly, this is my parameter settings, which support 36 layers, because i have pretrained 
+-- a model of 36 layers, also note that now i 
+--]]
 
 local cmd = torch.CmdLine()
 cmd:text()
