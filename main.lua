@@ -1,8 +1,9 @@
 require 'nn'
 --[[
 -- if you want to load a pretrained model, then the paramters must match, finetune on this model 
--- currenly, this is my parameter settings, which support 36 layers, because i have pretrained 
--- a model of 36 layers, also note that now i 
+-- currenly, this is my parameter settings, which support 36 layers as i have pretrained a 36 layers model 
+-- but you can train your model as many layers you like from scratch 
+-- a model of 36 layers, also note that now currenlty only support gpu training
 --]]
 
 local cmd = torch.CmdLine()
