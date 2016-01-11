@@ -6,6 +6,9 @@ require 'nn'
 -- a model of 36 layers, also note that now currenlty only support gpu training
 --]]
 
+local train = require 'train'
+local model = require 'model'
+
 local cmd = torch.CmdLine()
 cmd:text()
 cmd:text('MNIST training using Residual Neural Networks')
@@ -54,24 +57,21 @@ local N = (opt.layers-10)/6  -- N = (36-10)/6=26/6=4.33333..
 
 -- prepare data
 local mnist = require 'mnist'
-local train = mnist.traindataset()
+local train_set = mnist.traindataset()
 
- Xt = train.data
- Yt = train.label
+ Xt = train_set.data
+ Yt = train_set.label
 
-local test = mnist.testdataset()
-Xv = test.data
-Yv = test.label
+local test_set = mnist.testdataset()
+Xv = test_set.data
+Yv = test_set.label
 
 Yt[Yt:eq(0)] = 10
 Yv[Yv:eq(0)] = 10
 
 if string.len(opt.init_from) == 0 then 
-    train = require 'train'
-    model = require 'model'
     net,ct = model.residual(N)
-else
-    train = require 'train'
+else 
     checkpoint =  torch.load(opt.init_from)
     net = checkpoint.protos.net
     ct = checkpoint.protos.ct 

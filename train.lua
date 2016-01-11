@@ -8,7 +8,6 @@ function train.sgd(net,ct,Xt,Yt,Xv,Yv,K,sgd_config,batch)
     local x,dx = net:getParameters()
     require 'optim'
     local batch = batch or 500
-    print('line 11')
     local Nt = Xt:size(1)
     print('parameters size ..')
     print(#x)
