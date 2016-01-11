@@ -1,2 +1,2 @@
-data/
+/mnist/data/ 
 *.t7
